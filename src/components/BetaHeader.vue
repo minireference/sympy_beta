@@ -1,7 +1,7 @@
 <script setup>
 import { h, computed } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
-import { NMenu } from 'naive-ui'
+import { NMenu, NLayoutHeader } from 'naive-ui'
 
 const route = useRoute()
 
@@ -22,11 +22,7 @@ const menuValue = computed(() => {
 </script>
 
 <template>
-  <div class="menu">
-    <n-menu
-      mode="horizontal"
-      :value="menuValue"
-      :options="menuOptions"
-    />
-  </div>
+  <n-layout-header>
+    <n-menu mode="horizontal" :value="menuValue" :options="menuOptions" />
+  </n-layout-header>
 </template>

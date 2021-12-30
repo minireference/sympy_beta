@@ -1,5 +1,5 @@
 <script setup>
-import { NNotificationProvider } from 'naive-ui'
+import { NNotificationProvider, NScrollbar, NLayout } from 'naive-ui'
 import BetaHeader from '@/components/BetaHeader.vue'
 import BetaFooter from '@/components/BetaFooter.vue'
 import RuntimeLoader from '@/components/RuntimeLoader.vue'
@@ -9,9 +9,13 @@ import RuntimeLoader from '@/components/RuntimeLoader.vue'
   <n-notification-provider>
     <runtime-loader />
   </n-notification-provider>
-  <beta-header />
-  <router-view />
-  <beta-footer />
+  <n-layout position="absolute">
+    <beta-header />
+    <n-scrollbar>
+      <router-view />
+    </n-scrollbar>
+    <beta-footer />
+  </n-layout>
 </template>
 
 <style>
@@ -95,12 +99,6 @@ h1 a img {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   text-align: left;
-}
-
-.cell_output {
-  color: black;
-  padding: 0.25em 0;
-  font-family: "Droid Sans Mono", monospace;
 }
 
 .cell_output .cell_pre_output {
@@ -313,14 +311,6 @@ td.false {
 
 /* Phones/mobile devices */
 @media screen and (max-device-width: 767px) {
-  .menu {
-    padding: 0.25em 0.5em;
-  }
-
-  .menu a {
-    font-size: 1.25em;
-  }
-
   .result_card {
     -webkit-box-shadow: none;
     box-shadow: none;
